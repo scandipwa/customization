@@ -13,6 +13,7 @@
         <tab id="scandipwa" translate="label" sortOrder="100">
             <label>Scandipwa</label>
         </tab>
+        <include path="ScandiPWA_Customization::system/cookie.xml"/>
         <include path="ScandiPWA_Customization::system/colors.xml"/>
         <include path="ScandiPWA_Customization::system/content.xml"/>
     </system>
