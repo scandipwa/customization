@@ -4,6 +4,7 @@
  * @category ScandiPWA
  * @package ScandiPWA\Customization
  * @author Alfreds Genkins <info@scandiweb.com>
+ * @author Teodor Moquist <tm@scandesignmedia.com>
  * @copyright Copyright (c) 2015 Scandiweb, Ltd (http://scandiweb.com)
  * @license http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
  */
@@ -83,6 +84,20 @@
                 <label>Displayed attribute</label>
                 <comment>Attribute to display bellow product name. If you don't see your attribute listed here, make sure it is "Visible on Catalog Pages on Storefront".</comment>
                 <source_model>ScandiPWA\Customization\Model\Product\Attribute\Source\VisibleOnFrontend</source_model>
+            </field>
+        </group>
+
+        <group id="cookie_content" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Cookie Popup</label>
+
+            <field id="cookie_text" translate="label" type="textarea" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cookie Popup Text</label>
+                <comment>The text there is displayed in the cookie popup.</comment>
+            </field>
+
+            <field id="cookie_link" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cookie Popup Read more Link</label>
+                <comment>The link there is used in the read more for cookie popup.</comment>
             </field>
         </group>
     </section>

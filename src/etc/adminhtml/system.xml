@@ -4,6 +4,7 @@
  * @category ScandiPWA
  * @package ScandiPWA\Customization
  * @author Alfreds Genkins <info@scandiweb.com>
+ * @author Teodor Moquist <tm@scandesignmedia.com>
  * @copyright Copyright (c) 2015 Scandiweb, Ltd (http://scandiweb.com)
  * @license http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
  */
@@ -13,7 +14,6 @@
         <tab id="scandipwa" translate="label" sortOrder="100">
             <label>Scandipwa</label>
         </tab>
-        <include path="ScandiPWA_Customization::system/cookie.xml"/>
         <include path="ScandiPWA_Customization::system/colors.xml"/>
         <include path="ScandiPWA_Customization::system/content.xml"/>
     </system>
