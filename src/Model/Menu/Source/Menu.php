@@ -52,7 +52,11 @@ class Menu extends AbstractSource
                 ];
             }
 
-            array_unshift($this->_options, ['value' => '', 'label' => __('Please select a menu.')]);
+            if (is_array($this->_options)) {
+                array_unshift($this->_options, ['value' => '', 'label' => __('Please select a menu.')]);
+            } else {
+                $this->_options = ['value' => '', 'label' => __('No menus to select.')];
+            }
         }
 
         return $this->_options;

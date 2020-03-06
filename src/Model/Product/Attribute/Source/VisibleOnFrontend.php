@@ -65,7 +65,11 @@ class VisibleOnFrontend extends AbstractSource
                 ];
             }
 
-            array_unshift($this->_options, ['value' => '', 'label' => __('Please select an attribute.')]);
+            if (is_array($this->_options)) {
+                array_unshift($this->_options, ['value' => '', 'label' => __('Please select an attribute.')]);
+            } else {
+                $this->_options = ['value' => '', 'label' => __('No attributes (visible on frontend) to select.')];
+            }
         }
 
         return $this->_options;

@@ -56,7 +56,11 @@ class Block extends AbstractSource
                 ];
             }
 
-            array_unshift($this->_options, ['value' => '', 'label' => __('Please select a static block.')]);
+            if (is_array($this->_options)) {
+                array_unshift($this->_options, ['value' => '', 'label' => __('Please select a static block.')]);
+            } else {
+                $this->_options = ['value' => '', 'label' => __('No static blocks to select.')];
+            }
         }
 
         return $this->_options;
