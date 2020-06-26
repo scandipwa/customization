@@ -75,6 +75,12 @@
                 <comment>The block displayed bellow the menu.</comment>
                 <source_model>ScandiPWA\Customization\Model\Block\Source\Block</source_model>
             </field>
+
+            <field id="contacts_cms" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Promotion CMS block</label>
+                <comment>The contacts block displayed above the menu.</comment>
+                <source_model>ScandiPWA\Customization\Model\Block\Source\Block</source_model>
+            </field>
         </group>
 
         <group id="product_list_content" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
