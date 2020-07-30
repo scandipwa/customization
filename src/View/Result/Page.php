@@ -27,6 +27,8 @@ use Magento\Framework\View\Page\Layout\Reader;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use ScandiPWA\Locale\View\Result\Page as LocalePage;
+use Magento\Framework\Serialize\Serializer\Json;
+
 
 /**
  * Class Page
@@ -45,6 +47,11 @@ class Page extends LocalePage
     protected $storeManager;
 
     /**
+     * @var Json
+     */
+    protected $json;
+
+    /**
      * Page constructor.
      * @param StoreManagerInterface $storeManager
      * @param Resolver $localeResolver
@@ -56,6 +63,7 @@ class Page extends LocalePage
      * @param GeneratorPool $generatorPool
      * @param RendererFactory $pageConfigRendererFactory
      * @param Reader $pageLayoutReader
+     * @param Json $json
      * @param string $template
      * @param bool $isIsolated
      * @param EntitySpecificHandlesList|null $entitySpecificHandlesList
@@ -72,6 +80,7 @@ class Page extends LocalePage
         GeneratorPool $generatorPool,
         RendererFactory $pageConfigRendererFactory,
         Reader $pageLayoutReader,
+        Json $json,
         string $template,
         $isIsolated = false,
         EntitySpecificHandlesList $entitySpecificHandlesList = null,
@@ -79,6 +88,7 @@ class Page extends LocalePage
     ) {
         $this->scopeConfig = $context->getScopeConfig();
         $this->storeManager = $storeManager;
+        $this->json = $json;
 
         parent::__construct(
             $localeResolver,
@@ -111,5 +121,22 @@ class Page extends LocalePage
             ScopeInterface::SCOPE_STORE,
             $this->storeManager->getStore()->getId()
         );
+    }
+
+    /**
+     * Get store list json
+     *
+     * @return bool|false|string
+     */
+    public function getStoreListJson()
+    {
+        $result = [];
+        $storeList = $this->storeManager->getStores();
+
+        foreach ($storeList as $store) {
+            $result[] = $store->getCode();
+        }
+
+        return $this->json->serialize($result);
     }
 }
