@@ -6,8 +6,13 @@
         "OSL-3.0"
     ],
     "require": {
-        "scandiweb/module-core": "~0.1.2",
-        "scandipwa/locale": "^1.0.0"
+        "magento/framework": "*",
+        "scandipwa/locale": "^1",
+        "magento/module-config": "*",
+        "magento/module-cms": "*",
+        "magento/module-eav": "*",
+        "magento/module-catalog": "*",
+        "magento/module-store": "*"
     },
     "autoload": {
         "files": [
