@@ -68,6 +68,7 @@ class Page extends LocalePage
      * @param bool $isIsolated
      * @param EntitySpecificHandlesList|null $entitySpecificHandlesList
      * @param null $action
+     * @param array $rootTemplatePool
      */
     public function __construct(
         StoreManagerInterface $storeManager,
@@ -84,7 +85,8 @@ class Page extends LocalePage
         string $template,
         $isIsolated = false,
         EntitySpecificHandlesList $entitySpecificHandlesList = null,
-        $action = null
+        $action = null,
+        $rootTemplatePool = []
     ) {
         $this->scopeConfig = $context->getScopeConfig();
         $this->storeManager = $storeManager;
@@ -103,7 +105,8 @@ class Page extends LocalePage
             $template,
             $isIsolated,
             $entitySpecificHandlesList,
-            $action
+            $action,
+            $rootTemplatePool
         );
     }
 
