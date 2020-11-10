@@ -29,5 +29,18 @@
         <content_customization>
 
         </content_customization>
+        <webmanifest_customization>
+            <webmanifest>
+                <name>ScandiPWA</name>
+                <short_name>ScandiPWA</short_name>
+                <description>ScandiPWA theme DEMO store</description>
+                <background_color>ffffff</background_color>
+                <lang>en-US</lang>
+                <theme_color>ffffff</theme_color>
+                <start_url>/</start_url>
+                <display>standalone</display>
+                <orientation>portrait</orientation>
+            </webmanifest>
+        </webmanifest_customization>
     </default>
 </config>
