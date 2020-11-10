@@ -7,3 +7,5 @@ Adds *ScandiPWA* tab in the Store configuration. Adds color and content configur
 - Product card displayed attribute selection
 - Main menu switcher
 - Cookie popup content
+- Webmanifest content
+- Favicon
