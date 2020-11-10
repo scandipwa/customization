@@ -101,7 +101,7 @@ class AppIcon
                 $width = is_array($size) ? $size[0] : $size;
                 $height = is_array($size) ? $size[1] : $size;
                 $name = 'icon_' . $config['type'] . '_' . $width . 'x' . $height;
-                $src = $this->fileSystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath(self::STORAGE_PATH) . $name . '.png';
+                $src = 'pub/media/' . self::STORAGE_PATH . $name . '.png';
                 $output[] = [
                     'src' => $src,
                     'type' => 'image/png',
@@ -129,9 +129,9 @@ class AppIcon
                 $height = is_array($size) ? $size[1] : $size;
                 $size = $width . 'x' . $height;
                 $name = 'icon_' . $config['type'] . '_' . $width . 'x' . $height;
-                $src = $this->fileSystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath(self::STORAGE_PATH) . $name . '.png';
+                $href = 'pub/media/' . self::STORAGE_PATH . $name . '.png';
                 $output[$targetPath][$size] = [
-                    'href' => $src,
+                    'href' => $href,
                     'sizes' => $size
                 ];
             }

@@ -18,61 +18,50 @@
         <group id="webmanifest" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
             <field id="name" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Name</label>
-                <comment>The block displayed in the footer (above copyright notice).</comment>
             </field>
 
             <field id="short_name" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Short Name</label>
-                <comment>The block displayed in the footer (above copyright notice).</comment>
             </field>
 
             <field id="description" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Description</label>
-                <comment>The block displayed in the footer (above copyright notice).</comment>
             </field>
 
             <field id="lang" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Language</label>
-                <comment>The block displayed in the footer (above copyright notice).</comment>
             </field>
 
             <field id="theme_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Theme Color</label>
                 <frontend_model>ScandiPWA\Customization\Block\Adminhtml\Config\Color</frontend_model>
-                <comment>The block displayed in the footer (above copyright notice).</comment>
             </field>
 
             <field id="background_color" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Background Color</label>
                 <frontend_model>ScandiPWA\Customization\Block\Adminhtml\Config\Color</frontend_model>
-                <comment>The block displayed in the footer (above copyright notice).</comment>
             </field>
 
             <field id="start_url" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Start URL</label>
-                <comment>The block displayed in the footer (above copyright notice).</comment>
             </field>
 
             <field id="orientation" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Orientation</label>
                 <source_model>ScandiPWA\Customization\Model\Webmanifest\Source\Orientation</source_model>
-                <comment>The block displayed in the footer (above copyright notice).</comment>
             </field>
 
             <field id="display" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Display</label>
                 <source_model>ScandiPWA\Customization\Model\Webmanifest\Source\Display</source_model>
-                <comment>The block displayed in the footer (above copyright notice).</comment>
             </field>
 
             <field id="iarc_rating_id" translate="label" type="text" sortOrder="45" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>International Age Rating Coalition (IARC) ID</label>
-                <comment>The block displayed in the footer (above copyright notice).</comment>
             </field>
 
             <field id="scope" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Scope</label>
-                <comment>The block displayed in the footer (above copyright notice).</comment>
             </field>
         </group>
     </section>

@@ -9,11 +9,13 @@
 
 namespace ScandiPWA\Customization\Model\Design\Backend;
 
-use  ScandiPWA\Customization\Controller\AppIcon;
+use ScandiPWA\Customization\Controller\AppIcon;
 use Magento\Config\Model\Config\Backend\File\RequestData\RequestDataInterface;
 use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Data\Collection\AbstractDb;
+use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Model\Context;
@@ -104,6 +106,8 @@ class Favicon extends SourceFavicon
         $values = $this->getValue();
         $value = reset($values) ?: [];
 
+        $this->createFaviconDirectory();
+
         // Need to check name when it is uploaded in the media gallery
         $file = $value['file'] ?? $value['name'] ?? null;
         if (!isset($file)) {
@@ -120,6 +124,19 @@ class Favicon extends SourceFavicon
         $this->updateMediaDirectory(basename($file), $value['url']);
 
         return $this;
+    }
+
+    /**
+     * @return bool
+     * @throws FileSystemException
+     */
+    protected function createFaviconDirectory() {
+        $directoryWriter = $this->_filesystem->getDirectoryWrite(DirectoryList::MEDIA);
+        try {
+            return $directoryWriter->create('favicon');
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
     /**
