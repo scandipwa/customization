@@ -27,8 +27,8 @@ use Magento\Framework\View\Page\Layout\Reader;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use ScandiPWA\Locale\View\Result\Page as LocalePage;
+use ScandiPWA\Customization\Controller\AppIcon;
 use Magento\Framework\Serialize\Serializer\Json;
-
 
 /**
  * Class Page
@@ -52,6 +52,11 @@ class Page extends LocalePage
     protected $json;
 
     /**
+     * @var AppIcon
+     */
+    protected $appIcon;
+
+    /**
      * Page constructor.
      * @param StoreManagerInterface $storeManager
      * @param Resolver $localeResolver
@@ -65,6 +70,7 @@ class Page extends LocalePage
      * @param Reader $pageLayoutReader
      * @param Json $json
      * @param string $template
+     * @param AppIcon $appIcon,
      * @param bool $isIsolated
      * @param EntitySpecificHandlesList|null $entitySpecificHandlesList
      * @param null $action
@@ -82,6 +88,7 @@ class Page extends LocalePage
         Reader $pageLayoutReader,
         Json $json,
         string $template,
+        AppIcon $appIcon,
         $isIsolated = false,
         EntitySpecificHandlesList $entitySpecificHandlesList = null,
         $action = null
@@ -89,6 +96,7 @@ class Page extends LocalePage
         $this->scopeConfig = $context->getScopeConfig();
         $this->storeManager = $storeManager;
         $this->json = $json;
+        $this->appIcon = $appIcon;
 
         parent::__construct(
             $localeResolver,
@@ -138,5 +146,12 @@ class Page extends LocalePage
         }
 
         return $this->json->serialize($result);
+    }
+
+    /**
+     * @return array[]
+     */
+    public function getAppIconData() {
+        return $this->appIcon->getIconLinks();
     }
 }
