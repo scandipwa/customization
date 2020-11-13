@@ -106,5 +106,15 @@
                 <comment>The link there is used in the read more for cookie popup.</comment>
             </field>
         </group>
+
+        <group id="contact_us_content" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Contact Us Page</label>
+
+            <field id="contact_us_cms_block" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Contact Us CMS Block</label>
+                <comment>The block displayed in the Contact Us page</comment>
+                <source_model>ScandiPWA\Customization\Model\Block\Source\Block</source_model>
+            </field>
+        </group>
     </section>
 </include>
