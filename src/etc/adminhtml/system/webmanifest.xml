@@ -16,6 +16,9 @@
         <resource>ScandiPWA_Customization::scandipwa_config</resource>
 
         <group id="webmanifest" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>PWA web-manifest configuration</label>
+            <comment>Learn more about web-manifests fields on MDN. https://developer.mozilla.org/en-US/docs/Web/Manifest</comment>
+
             <field id="name" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Name</label>
             </field>

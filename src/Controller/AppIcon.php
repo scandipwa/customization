@@ -125,7 +125,7 @@ class AppIcon
         ];
 
         foreach (self::IMAGE_RESIZING_CONFIG as $type => $config) {
-            foreach (self::IMAGE_RESIZING_CONFIG[1]['sizes'] as $size) {
+            foreach ($config['sizes'] as $size) {
                 $width = is_array($size) ? $size[0] : $size;
                 $height = is_array($size) ? $size[1] : $size;
                 $size = $width . 'x' . $height;
