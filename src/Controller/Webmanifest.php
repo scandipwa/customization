@@ -23,7 +23,7 @@ class Webmanifest
 {
     const WEBMANIFEST_CONFIG_PATH = 'webmanifest_customization/webmanifest/';
 
-    const STORAGE_PATH = 'webmanifest/manifest.webmanifest';
+    const STORAGE_PATH = 'webmanifest/manifest.json';
 
     const ALLOWED_FIELDS = [
         'name',
