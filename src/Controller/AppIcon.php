@@ -24,11 +24,11 @@ class AppIcon
     const STORAGE_PATH = 'favicon/icons/';
 
     const IMAGE_RESIZING_CONFIG = [
-        'apple' => [
+        'ios' => [
             'type' => 'ios',
             'sizes' => [120, 152, 167, 180, 1024]
         ],
-        'apple_startup' => [
+        'ios_startup' => [
             'type' => 'ios_startup',
             'sizes' => [2048, 1668, 1536, 1125, 1242, 750, 640]
         ],
@@ -119,18 +119,23 @@ class AppIcon
     {
         $output = [
             'icon' => [],
-            'ios_startup' => []
+            'ios' => [],
+            'ios_startup' => [],
+            'android' => []
         ];
 
         foreach (self::IMAGE_RESIZING_CONFIG as $type => $config) {
-            $targetPath = $type === 'apple_startup' ? 'ios_startup' : 'icon';
             foreach ($config['sizes'] as $size) {
                 $width = is_array($size) ? $size[0] : $size;
                 $height = is_array($size) ? $size[1] : $size;
                 $size = $width . 'x' . $height;
                 $name = 'icon_' . $config['type'] . '_' . $width . 'x' . $height;
                 $href = 'pub/media/' . self::STORAGE_PATH . $name . '.png';
-                $output[$targetPath][$size] = [
+                $output[$type][$size] = [
+                    'href' => $href,
+                    'sizes' => $size
+                ];
+                $output['icon'][$size] = [
                     'href' => $href,
                     'sizes' => $size
                 ];
