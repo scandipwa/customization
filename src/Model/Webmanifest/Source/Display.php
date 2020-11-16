@@ -27,7 +27,7 @@ class Display extends AbstractSource
     public function getAllOptions()
     {
         return [
-            ['value' => 'fullscreem', 'label' => __('Fullscreen')],
+            ['value' => 'fullscreen', 'label' => __('Fullscreen')],
             ['value' => 'standalone', 'label' => __('Standalone')],
             ['value' => 'minimal-ui', 'label' => __('Minimal UI')],
             ['value' => 'browser', 'label' => __('Browser')],
