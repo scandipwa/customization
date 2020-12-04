@@ -105,6 +105,11 @@
                 <label>Cookie Popup Read more Link</label>
                 <comment>The link there is used in the read more for cookie popup.</comment>
             </field>
+
+            <field id="cookie_script" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cookie Script</label>
+                <comment>If you want to use a 3th-party script then add it here and it will replace the normal cookie popup</comment>
+            </field>
         </group>
 
         <group id="contact_us_content" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
