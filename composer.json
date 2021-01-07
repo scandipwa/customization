@@ -7,7 +7,7 @@
     ],
     "require": {
         "magento/framework": "*",
-        "scandipwa/locale": "^1.2",
+        "scandipwa/locale": "^2",
         "magento/module-config": "*",
         "magento/module-cms": "*",
         "magento/module-eav": "*",
