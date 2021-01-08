@@ -13,6 +13,7 @@
 namespace ScandiPWA\Customization\View\Result;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Locale\Resolver;
 use Magento\Framework\Translate\InlineInterface;
@@ -68,6 +69,7 @@ class Page extends LocalePage
      * @param GeneratorPool $generatorPool
      * @param RendererFactory $pageConfigRendererFactory
      * @param Reader $pageLayoutReader
+     * @param DirectoryList $directoryList
      * @param Json $json
      * @param string $template
      * @param AppIcon $appIcon,
@@ -87,6 +89,7 @@ class Page extends LocalePage
         GeneratorPool $generatorPool,
         RendererFactory $pageConfigRendererFactory,
         Reader $pageLayoutReader,
+        DirectoryList $directoryList,
         Json $json,
         string $template,
         AppIcon $appIcon,
@@ -111,6 +114,7 @@ class Page extends LocalePage
             $pageConfigRendererFactory,
             $pageLayoutReader,
             $template,
+            $directoryList,
             $isIsolated,
             $entitySpecificHandlesList,
             $action,
