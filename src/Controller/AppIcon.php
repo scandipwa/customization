@@ -101,11 +101,11 @@ class AppIcon
                 $width = is_array($size) ? $size[0] : $size;
                 $height = is_array($size) ? $size[1] : $size;
                 $name = 'icon_' . $config['type'] . '_' . $width . 'x' . $height;
-                $src = 'pub/media/' . self::STORAGE_PATH . $name . '.png';
+                $src = '../' . self::STORAGE_PATH . $name . '.png';
                 $output[] = [
                     'src' => $src,
                     'type' => 'image/png',
-                    'size' => $width . 'x' . $height
+                    'sizes' => $width . 'x' . $height
                 ];
             }
         }
