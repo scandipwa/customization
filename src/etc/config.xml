@@ -40,6 +40,7 @@
                 <start_url>/</start_url>
                 <display>standalone</display>
                 <orientation>portrait</orientation>
+                <scope>/</scope>
             </webmanifest>
         </webmanifest_customization>
     </default>
