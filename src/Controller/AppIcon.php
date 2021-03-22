@@ -9,6 +9,7 @@
 
 namespace ScandiPWA\Customization\Controller;
 
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Image\AdapterFactory;
@@ -69,20 +70,35 @@ class AppIcon
      * @param string $absolutePath
      * @return bool
      */
-    protected function saveImage ($name, $width, $height, $absolutePath)
+    protected function saveImage ($source, $name, $width = null, $height = null)
     {
-        $imageResizedDir = $this->fileSystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath(self::STORAGE_PATH) . $name . '.png';
+        $path = $this->fileSystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath(self::STORAGE_PATH) . $name . '.png';
+        $this->saveImageWithPath($source, $path, $width, $height);
+    }
 
+    /**
+     * @param $path
+     * @param $width
+     * @param $height
+     * @param $absolutePath
+     * @return bool
+     */
+    protected function saveImageWithPath ($source, $targetPath, $width = null, $height = null)
+    {
         $imageResize = $this->imageFactory->create();
-        $imageResize->open($absolutePath);
+        $imageResize->open($source);
         $imageResize->constrainOnly(true);
         $imageResize->keepTransparency(true);
-        $imageResize->keepFrame(false);
-        $imageResize->keepAspectRatio(false);
-        $imageResize->resize($width,$height);
+
+        // Resizes image
+        if ($width !== null && $height !== null) {
+            $imageResize->keepFrame(false);
+            $imageResize->keepAspectRatio(false);
+            $imageResize->resize($width,$height);
+        }
 
         try {
-            $imageResize->save($imageResizedDir);
+            $imageResize->save($targetPath);
         } catch (\Exception $e) {
             return false;
         }
@@ -146,20 +162,30 @@ class AppIcon
     }
 
     /**
+     * Creates main favicon icon.
+     */
+    private function buildFaviconImage($sourcePath)
+    {
+        $targetPath = $this->fileSystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath(self::REFERENCE_IMAGE_PATH);
+        $this->saveImageWithPath($sourcePath, $targetPath);
+    }
+
+    /**
      * @return bool
      */
-    public function buildAppIcons () {
-        $absolutePath = $this->fileSystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath(self::REFERENCE_IMAGE_PATH);
-
-        if (!file_exists($absolutePath))
+    public function buildAppIcons ($sourcePath)
+    {
+        if (!file_exists($sourcePath))
             return false;
+
+        $this->buildFaviconImage($sourcePath);
 
         foreach (self::IMAGE_RESIZING_CONFIG as $config) {
             foreach ($config['sizes'] as $size) {
                 $width = is_array($size) ? $size[0] : $size;
                 $height = is_array($size) ? $size[1] : $size;
                 $name = 'icon_' . $config['type'] . '_' . $width . 'x' . $height;
-                $this->saveImage($name, $width, $height, $absolutePath);
+                $this->saveImage($sourcePath, $name, $width, $height);
             }
         }
     }
