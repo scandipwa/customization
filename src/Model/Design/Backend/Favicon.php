@@ -43,6 +43,11 @@ class Favicon extends SourceFavicon
     protected $databaseHelper;
 
     /**
+     * @var string
+     */
+    private $fileBaseName;
+
+    /**
      * Favicon constructor.
      * @param Context $context
      * @param Registry $registry
@@ -79,21 +84,17 @@ class Favicon extends SourceFavicon
     }
 
     /**
-     * @return string
-     */
-    protected function _getUploadDir() {
-        return $this->_mediaDirectory->getRelativePath(self::UPLOAD_DIR);
-    }
-
-    /**
      * Generates webmanifest icons
-     * 
+     *
      * @return Favicon
      */
     public function afterSave() {
-        $result = parent::afterSave();
-        $this->appIcon->buildAppIcons();
-        return $result;
+        $sourcePath = $this->_mediaDirectory->getAbsolutePath(
+            $this->_appendScopeInfo(self::UPLOAD_DIR) . '/' . $this->fileBaseName
+        );
+        $this->appIcon->buildAppIcons($sourcePath);
+
+        return parent::afterSave();
     }
 
     /**
@@ -121,7 +122,8 @@ class Favicon extends SourceFavicon
         }
 
         //phpcs:ignore Magento2.Functions.DiscouragedFunction
-        $this->updateMediaDirectory(basename($file), $value['url']);
+        $this->fileBaseName = basename($file);
+        $this->updateMediaDirectory($this->fileBaseName, $value['url']);
 
         return $this;
     }
@@ -150,7 +152,7 @@ class Favicon extends SourceFavicon
         $relativeMediaPath = $this->getRelativeMediaPath($url);
         $tmpMediaPath = $this->getTmpMediaPath($filename);
         $mediaPath = $this->_mediaDirectory->isFile($relativeMediaPath) ? $relativeMediaPath : $tmpMediaPath;
-        $destinationMediaPath = $this->_getUploadDir() . '/favicon.png';
+        $destinationMediaPath = $this->_getUploadDir() . '/' . $filename;
 
         $result = $mediaPath === $destinationMediaPath;
         if (!$result) {
