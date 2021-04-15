@@ -146,7 +146,7 @@ class AppIcon
                 $height = is_array($size) ? $size[1] : $size;
                 $size = $width . 'x' . $height;
                 $name = 'icon_' . $config['type'] . '_' . $width . 'x' . $height;
-                $href = '/pub/media/' . self::STORAGE_PATH . $name . '.png';
+                $href = '/media/' . self::STORAGE_PATH . $name . '.png';
                 $output[$type][$size] = [
                     'href' => $href,
                     'sizes' => $size
