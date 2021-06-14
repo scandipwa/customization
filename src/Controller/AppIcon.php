@@ -85,6 +85,10 @@ class AppIcon
      */
     protected function saveImageWithPath ($source, $targetPath, $width = null, $height = null)
     {
+        if (!file_exists($source) || !is_file($source)) {
+            return false;
+        }
+
         $imageResize = $this->imageFactory->create();
         $imageResize->open($source);
         $imageResize->constrainOnly(true);
