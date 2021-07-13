@@ -24,6 +24,8 @@ class AppIcon
 
     const STORAGE_PATH = 'favicon/icons/';
 
+    const MASKABLE_IMAGE_SIZE = 192;
+
     const IMAGE_RESIZING_CONFIG = [
         'ios' => [
             'type' => 'ios',
@@ -122,10 +124,12 @@ class AppIcon
                 $height = is_array($size) ? $size[1] : $size;
                 $name = 'icon_' . $config['type'] . '_' . $width . 'x' . $height;
                 $src = '../' . self::STORAGE_PATH . $name . '.png';
+                $purpose = $width === self::MASKABLE_IMAGE_SIZE ? 'any maskable' : 'any';
                 $output[] = [
                     'src' => $src,
                     'type' => 'image/png',
-                    'sizes' => $width . 'x' . $height
+                    'sizes' => $width . 'x' . $height,
+                    'purpose' => $purpose
                 ];
             }
         }
@@ -150,7 +154,7 @@ class AppIcon
                 $height = is_array($size) ? $size[1] : $size;
                 $size = $width . 'x' . $height;
                 $name = 'icon_' . $config['type'] . '_' . $width . 'x' . $height;
-                $href = '/pub/media/' . self::STORAGE_PATH . $name . '.png';
+                $href = '/media/' . self::STORAGE_PATH . $name . '.png';
                 $output[$type][$size] = [
                     'href' => $href,
                     'sizes' => $size
