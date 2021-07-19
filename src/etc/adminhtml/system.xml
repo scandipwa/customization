@@ -17,5 +17,6 @@
         <include path="ScandiPWA_Customization::system/colors.xml"/>
         <include path="ScandiPWA_Customization::system/content.xml"/>
         <include path="ScandiPWA_Customization::system/webmanifest.xml"/>
+        <include path="ScandiPWA_Customization::system/layout-direction.xml"/>
     </system>
 </config>
