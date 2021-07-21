@@ -43,5 +43,10 @@
                 <scope>/</scope>
             </webmanifest>
         </webmanifest_customization>
+        <layout_direction_configuration>
+            <layout_direction_section>
+                <layout_direction>ltr</layout_direction>
+            </layout_direction_section>
+        </layout_direction_configuration>
     </default>
 </config>
