@@ -25,6 +25,10 @@
                                     id="ScandiPWA_Customization::color_customization"
                                     title="Color customization"
                                 />
+                                <resource
+                                    id="ScandiPWA_Customization::layout_direction"
+                                    title="Layout direction"
+                                />
                             </resource>
                         </resource>
                     </resource>
