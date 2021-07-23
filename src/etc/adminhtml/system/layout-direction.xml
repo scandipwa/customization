@@ -17,7 +17,7 @@
             <label>Layout Direction Configuration</label>
             <comment>Determines layout direction for LTR and RTL languages</comment>
 
-            <field id="layout_direction" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">
+            <field id="layout_direction" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Layout Direction</label>
                 <source_model>ScandiPWA\Customization\Model\LayoutDirection\Source\LayoutDirection</source_model>
             </field>
