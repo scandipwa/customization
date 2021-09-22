@@ -1,0 +1,19 @@
+<?php
+/**
+ * @category ScandiPWA
+ * @package ScandiPWA\Customization
+ * @author Aleksandrs Kondratjevs <info@scandiweb.com>
+ * @copyright Copyright (c) 2021 Scandiweb, Ltd (http://scandiweb.com)
+ * @license http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
+ */
+?>
+<?php if ($block->getScandiPWAVersion()) : ?>
+<p class="scandipwa-version">
+    <strong><?= $block->escapeHtml(__('ScandiPWA')) ?></strong>
+    <?= $block->escapeHtml(__('ver. %1', $block->scandiPWAPackgeVersion)) ?>
+</p>
+<?php endif; ?>
+<p class="magento-version">
+    <strong><?= $block->escapeHtml(__('Magento')) ?></strong>
+    <?= $block->escapeHtml(__('ver. %1', $block->getMagentoVersion())) ?>
+</p>
