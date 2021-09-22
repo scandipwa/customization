@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category ScandiPWA
+ * @package ScandiPWA\Customization
+ * @author Aleksandrs Kondratjevs <info@scandiweb.com>
+ * @copyright Copyright (c) 2021 Scandiweb, Ltd (http://scandiweb.com)
+ * @license http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="version">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">ScandiPWA_Customization::page/footer.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>
