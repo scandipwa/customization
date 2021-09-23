@@ -82,8 +82,8 @@ class Footer extends CoreFooter
         $pathToTheme = substr($pathToTheme, 0, -7) . self::PACKAGE_JSON_FILE;
 
         if (file_exists($pathToTheme)) {
-            $packageData = json_decode(file_get_contents($pathToTheme));
-            $this->scandiPWAPackgeVersion = $packageData->version ?? false;
+            $packageData = json_decode(file_get_contents($pathToTheme), true);
+            $this->scandiPWAPackgeVersion = $this->getScandiPWAFromPackageData($packageData);
         } else {
             $this->scandiPWAPackgeVersion = false;
         }
@@ -110,6 +110,14 @@ class Footer extends CoreFooter
         }
 
         return $themeDirectoryPath;
+    }
+
+    public function getScandiPWAFromPackageData($data) {
+        if (isset($data['dependencies']['@scandipwa/scandipwa'])) {
+            return $data['dependencies']['@scandipwa/scandipwa'];
+        }
+
+        return $data['version'] ?? false;
     }
 
     /**
