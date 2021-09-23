@@ -112,6 +112,10 @@ class Footer extends CoreFooter
         return $themeDirectoryPath;
     }
 
+    /**
+     * @param $data
+     * @return string|false
+     */
     public function getScandiPWAFromPackageData($data) {
         if (isset($data['dependencies']['@scandipwa/scandipwa'])) {
             return $data['dependencies']['@scandipwa/scandipwa'];
