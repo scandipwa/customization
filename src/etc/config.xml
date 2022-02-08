@@ -37,7 +37,7 @@
                 <background_color>ffffff</background_color>
                 <lang>en-US</lang>
                 <theme_color>ffffff</theme_color>
-                <start_url>/</start_url>
+                <start_url>/?utm_source=homescreen&amp;utm_medium=scandiPWA</start_url>
                 <display>standalone</display>
                 <orientation>portrait</orientation>
                 <scope>/</scope>
