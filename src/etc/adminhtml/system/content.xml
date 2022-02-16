@@ -70,11 +70,6 @@
                 <source_model>ScandiPWA\Customization\Model\Menu\Source\Menu</source_model>
             </field>
 
-            <field id="header_cms" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Promotion CMS block</label>
-                <comment>The block displayed bellow the menu.</comment>
-                <source_model>ScandiPWA\Customization\Model\Block\Source\Block</source_model>
-            </field>
 
             <field id="contacts_cms" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Promotion CMS block</label>
