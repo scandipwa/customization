@@ -2,7 +2,6 @@
     "name": "scandipwa/customization",
     "description": "Customization configuration for ScandiPWA",
     "type": "magento2-module",
-    "version": "1.5.10",
      "license": [
         "OSL-3.0"
     ],
