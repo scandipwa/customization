@@ -20,7 +20,7 @@ use Magento\Framework\View\Design\Theme\ListInterface;
 class Footer extends CoreFooter
 {
     const PACKAGE_JSON_FILE = 'package.json';
-    
+
     /**
      * @var ListInterface
      */
@@ -89,7 +89,7 @@ class Footer extends CoreFooter
             $packageData = json_decode(file_get_contents($pathToTheme), true);
              $this->scandiPWAPackgeVersion = $this->getScandiPWAFromPackageData($packageData);
         } else {
-            $this->scandiPWAPackgeVersion = false;
+            $this->scandiPWAPackgeVersion = "not selected";
         }
     }
 
