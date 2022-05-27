@@ -12,6 +12,7 @@ namespace ScandiPWA\Customization\Block\Page;
 use Magento\Backend\Block\Page\Footer as CoreFooter;
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\App\ProductMetadataInterface;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Component\ComponentRegistrarInterface;
 use Magento\Framework\View\Design\Theme\ListInterface;
@@ -29,6 +30,11 @@ class Footer extends CoreFooter
      * @var ListInterface
      */
     protected $themeList;
+
+    /**
+     * @var ResourceConnection
+     */
+    protected $resourceConnection;
 
     /**
      * @var ComponentRegistrarInterface
@@ -53,6 +59,7 @@ class Footer extends CoreFooter
         ProductMetadataInterface $productMetadata,
         ListInterface $themeList,
         ComponentRegistrarInterface $componentRegistrar,
+        ResourceConnection $resourceConnection,
         array $data = []
     ) {
         parent::__construct(
@@ -81,9 +88,14 @@ class Footer extends CoreFooter
         // where is located package.json file
         $pathToTheme = substr($pathToTheme, 0, -7) . self::PACKAGE_JSON_FILE;
 
+        // $connection =  $this->$resourceConnection->$getConnection();
+        // $query ="SELECT * FROM core_config_data WHERE config_id = 37";
+        // $themeid = $connection->fetchAll(query);
+
         if (file_exists($pathToTheme)) {
             $packageData = json_decode(file_get_contents($pathToTheme), true);
             $this->scandiPWAPackgeVersion = $this->getScandiPWAFromPackageData($packageData);
+            // $this->scandiPWAPackgeVersion = $themeid->value;
         } else {
             $this->scandiPWAPackgeVersion = false;
         }
