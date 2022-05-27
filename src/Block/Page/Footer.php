@@ -20,12 +20,7 @@ use Magento\Framework\View\Design\Theme\ListInterface;
 class Footer extends CoreFooter
 {
     const PACKAGE_JSON_FILE = 'package.json';
-
-    /**
-     * ScandiPWA registration theme component name
-     */
-    const SCANDIPWA_COMPONENT_NAME = 'frontend/scandipwa/scandipwa';
-
+    
     /**
      * @var ListInterface
      */
@@ -52,6 +47,7 @@ class Footer extends CoreFooter
      * @param ProductMetadataInterface $productMetadata
      * @param ListInterface $themeList
      * @param ComponentRegistrarInterface $componentRegistrar
+     * @param ResourceConnection $resourceConnection
      * @param array $data
      */
     public function __construct(
@@ -68,6 +64,7 @@ class Footer extends CoreFooter
             $data
         );
 
+        $this->resourceConnection = $resourceConnection;
         $this->themeList = $themeList;
         $this->componentRegistrar = $componentRegistrar;
     }
@@ -88,14 +85,9 @@ class Footer extends CoreFooter
         // where is located package.json file
         $pathToTheme = substr($pathToTheme, 0, -7) . self::PACKAGE_JSON_FILE;
 
-        // $connection =  $this->$resourceConnection->$getConnection();
-        // $query ="SELECT * FROM core_config_data WHERE config_id = 37";
-        // $themeid = $connection->fetchAll(query);
-
         if (file_exists($pathToTheme)) {
             $packageData = json_decode(file_get_contents($pathToTheme), true);
-            $this->scandiPWAPackgeVersion = $this->getScandiPWAFromPackageData($packageData);
-            // $this->scandiPWAPackgeVersion = $themeid->value;
+             $this->scandiPWAPackgeVersion = $this->getScandiPWAFromPackageData($packageData);
         } else {
             $this->scandiPWAPackgeVersion = false;
         }
@@ -110,8 +102,14 @@ class Footer extends CoreFooter
     public function getScandiPWADirectoryPath() {
         $themeDirectoryPath = null;
 
+        $connection =  $this->resourceConnection->getConnection();
+        $themeid_query = "SELECT value FROM core_config_data WHERE config_id = 37";
+        $themeid = $connection->fetchAll($themeid_query);
+        $applied_theme_query = "SELECT * FROM theme WHERE theme_id = " . $themeid[0]['value'];
+        $applied_theme = $connection->fetchAll($applied_theme_query);
+
         foreach ($this->themeList as $theme) {
-            if ($theme->getFullPath() === self::SCANDIPWA_COMPONENT_NAME) {
+            if ($theme->getFullPath() === "frontend/" . $applied_theme[0]['theme_path']) {
                 $themeDirectoryPath = $this->componentRegistrar->getPath(
                     ComponentRegistrar::THEME,
                     $theme->getFullPath()
