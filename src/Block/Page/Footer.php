@@ -12,7 +12,6 @@ namespace ScandiPWA\Customization\Block\Page;
 use Magento\Backend\Block\Page\Footer as CoreFooter;
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\App\ProductMetadataInterface;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Component\ComponentRegistrarInterface;
 use Magento\Framework\View\Design\Theme\ListInterface;
@@ -25,11 +24,6 @@ class Footer extends CoreFooter
      * @var ListInterface
      */
     protected $themeList;
-
-    /**
-     * @var ResourceConnection
-     */
-    protected $resourceConnection;
 
     /**
      * @var ComponentRegistrarInterface
@@ -47,7 +41,6 @@ class Footer extends CoreFooter
      * @param ProductMetadataInterface $productMetadata
      * @param ListInterface $themeList
      * @param ComponentRegistrarInterface $componentRegistrar
-     * @param ResourceConnection $resourceConnection
      * @param array $data
      */
     public function __construct(
@@ -55,7 +48,6 @@ class Footer extends CoreFooter
         ProductMetadataInterface $productMetadata,
         ListInterface $themeList,
         ComponentRegistrarInterface $componentRegistrar,
-        ResourceConnection $resourceConnection,
         array $data = []
     ) {
         parent::__construct(
@@ -64,7 +56,6 @@ class Footer extends CoreFooter
             $data
         );
 
-        $this->resourceConnection = $resourceConnection;
         $this->themeList = $themeList;
         $this->componentRegistrar = $componentRegistrar;
     }
@@ -102,16 +93,8 @@ class Footer extends CoreFooter
     public function getScandiPWADirectoryPath() {
         $themeDirectoryPath = null;
 
-        $connection = $this->resourceConnection->getConnection();
-        // fetch the id of the currently applied theme
-        $themeid_query = "SELECT value FROM core_config_data WHERE path = 'design/theme/theme_id' AND scope_id = 0";
-        $themeid = $connection->fetchAll($themeid_query);
-        // use this id to fetch the applied theme itself
-        $applied_theme_query = "SELECT * FROM theme WHERE theme_id = " . $themeid[0]['value'];
-        $applied_theme = $connection->fetchAll($applied_theme_query);
-
         foreach ($this->themeList as $theme) {
-            if ($theme->getFullPath() === "frontend/" . $applied_theme[0]['theme_path']) {
+            if (str_contains($theme->getFullPath(), "frontend/scandipwa")) {
                 $themeDirectoryPath = $this->componentRegistrar->getPath(
                     ComponentRegistrar::THEME,
                     $theme->getFullPath()
