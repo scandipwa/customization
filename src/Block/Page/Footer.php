@@ -102,7 +102,7 @@ class Footer extends CoreFooter
     public function getScandiPWADirectoryPath() {
         $themeDirectoryPath = null;
 
-        $connection =  $this->resourceConnection->getConnection();
+        $connection = $this->resourceConnection->getConnection();
         $themeid_query = "SELECT value FROM core_config_data WHERE config_id = 37";
         $themeid = $connection->fetchAll($themeid_query);
         $applied_theme_query = "SELECT * FROM theme WHERE theme_id = " . $themeid[0]['value'];
