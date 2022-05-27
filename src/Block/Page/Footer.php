@@ -87,9 +87,9 @@ class Footer extends CoreFooter
 
         if (file_exists($pathToTheme)) {
             $packageData = json_decode(file_get_contents($pathToTheme), true);
-             $this->scandiPWAPackgeVersion = $this->getScandiPWAFromPackageData($packageData);
+            $this->scandiPWAPackgeVersion = $this->getScandiPWAFromPackageData($packageData);
         } else {
-            $this->scandiPWAPackgeVersion = "not selected";
+            $this->scandiPWAPackgeVersion = "n/a";
         }
     }
 
@@ -104,7 +104,7 @@ class Footer extends CoreFooter
 
         $connection = $this->resourceConnection->getConnection();
         // fetch the id of the currently applied theme
-        $themeid_query = "SELECT value FROM core_config_data WHERE config_id = 37";
+        $themeid_query = "SELECT value FROM core_config_data WHERE path = 'design/theme/theme_id' AND scope_id = 0";
         $themeid = $connection->fetchAll($themeid_query);
         // use this id to fetch the applied theme itself
         $applied_theme_query = "SELECT * FROM theme WHERE theme_id = " . $themeid[0]['value'];
