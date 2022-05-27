@@ -103,8 +103,10 @@ class Footer extends CoreFooter
         $themeDirectoryPath = null;
 
         $connection = $this->resourceConnection->getConnection();
+        // fetch the id of the currently applied theme
         $themeid_query = "SELECT value FROM core_config_data WHERE config_id = 37";
         $themeid = $connection->fetchAll($themeid_query);
+        // use this id to fetch the applied theme itself
         $applied_theme_query = "SELECT * FROM theme WHERE theme_id = " . $themeid[0]['value'];
         $applied_theme = $connection->fetchAll($applied_theme_query);
 
