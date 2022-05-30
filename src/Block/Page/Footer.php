@@ -21,6 +21,11 @@ class Footer extends CoreFooter
     const PACKAGE_JSON_FILE = 'package.json';
 
     /**
+     * ScandiPWA registration theme component name
+     */
+    const SCANDIPWA_COMPONENT_NAME = 'frontend/scandipwa';
+
+    /**
      * @var ListInterface
      */
     protected $themeList;
@@ -80,7 +85,7 @@ class Footer extends CoreFooter
             $packageData = json_decode(file_get_contents($pathToTheme), true);
             $this->scandiPWAPackgeVersion = $this->getScandiPWAFromPackageData($packageData);
         } else {
-            $this->scandiPWAPackgeVersion = "n/a";
+            $this->scandiPWAPackgeVersion = 'n/a';
         }
     }
 
@@ -94,7 +99,7 @@ class Footer extends CoreFooter
         $themeDirectoryPath = null;
 
         foreach ($this->themeList as $theme) {
-            if (str_contains($theme->getFullPath(), "frontend/scandipwa")) {
+            if (str_contains($theme->getFullPath(), self::SCANDIPWA_COMPONENT_NAME)) {
                 $themeDirectoryPath = $this->componentRegistrar->getPath(
                     ComponentRegistrar::THEME,
                     $theme->getFullPath()
