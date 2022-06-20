@@ -10,15 +10,13 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="ScandiPWA_Customization::js/datepicker.js"/>
+    </head>
     <body>
         <referenceBlock name="version">
             <action method="setTemplate">
                 <argument name="template" xsi:type="string">ScandiPWA_Customization::page/footer.phtml</argument>
-            </action>
-        </referenceBlock>
-        <referenceBlock name="version">
-            <action method="setTemplate">
-                <argument name="template" xsi:type="string">ScandiPWA_Customization::page/header.phtml</argument>
             </action>
         </referenceBlock>
     </body>
