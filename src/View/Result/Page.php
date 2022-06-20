@@ -158,7 +158,16 @@ class Page extends LocalePage
     /**
      * @return array[]
      */
-    public function getAppIconData() {
+    public function getAppIconData()
+    {
         return $this->appIcon->getIconLinks();
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebsiteCode()
+    {
+        return $this->storeManager->getWebsite()->getCode();
     }
 }
