@@ -5,14 +5,15 @@ require(['jquery'], ($) => {
     $(window).on('load', () => {
         const show = $.datepicker._showDatepicker;
         if (show) {
-            const datePicker = $($.datepicker.dpDiv[0]);
+            const datePicker = $.datepicker.dpDiv;
 
             $.extend($.datepicker, {
                 _showDatepicker: (trigger) => {
                     show(trigger);
 
                     if ($(trigger).parents('.modal-slide').length > 0) {
-                        datePicker.css('top', `${datePicker.height() - 25}px`);
+                        const { top, height } = trigger.getBoundingClientRect();
+                        datePicker.css('top', top + height);
                     }
                 },
             });
