@@ -1,7 +1,7 @@
 //This script fixes incorrect positioning in modal datepickers.
 //This file should be removed after magento fixes the datepickers.
 
-require(['jquery'], ($) => {
+require(['jquery', 'jquery/ui'], ($) => {
     $(window).on('load', () => {
         const show = $.datepicker._showDatepicker;
         if (show) {
