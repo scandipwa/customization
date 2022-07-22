@@ -174,6 +174,6 @@ class Page extends LocalePage
     public function getAccountSharingOption()
     {
         $optionValue = $this->scopeConfig->getValue('customer/account_share/scope', ScopeInterface::SCOPE_WEBSITE);
-        return $optionValue == "0" ? "global" : "per_website";
+        return (int)$optionValue == 0 ? 'global' : 'per_website';
     }
 }
