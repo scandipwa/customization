@@ -62,14 +62,7 @@
         </group>
 
         <group id="header_content" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-            <label>Header and Menu</label>
-
-            <field id="header_menu" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Menu to display</label>
-                <comment>Please select a menu you would like to display</comment>
-                <source_model>ScandiPWA\Customization\Model\Menu\Source\Menu</source_model>
-            </field>
-
+            <label>Header</label>
 
             <field id="contacts_cms" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Promotion CMS block</label>
