@@ -170,4 +170,14 @@ class Page extends LocalePage
     {
         return $this->storeManager->getWebsite()->getCode();
     }
+    
+    /**
+     * @return string
+     */
+    public function getStoreCurrency()
+    {
+        return $this->storeManager->getStore()
+            ->getCurrentCurrency()
+            ->getCode();
+    }
 }
