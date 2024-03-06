@@ -170,6 +170,14 @@ class Page extends LocalePage
     {
         return $this->storeManager->getWebsite()->getCode();
     }
+
+    /**
+     * @return string
+     */
+    public function getBaseLinkUrl()
+    {
+        return $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_LINK);
+    }
     
     /**
      * @return string
